@@ -64,7 +64,7 @@ public FutureTask(Runnable runnable, V result) {
 public void execute(Runnable command) {}
 ```
 ### 4.简单示例：
->1.submit实现了callable的任务;
+>1.submit提交实现了callable的任务;
 
 ```
 private static void futureTest() {
@@ -89,7 +89,7 @@ private static void futureTest() {
     }
 ```
 
->2.submit实现了Rrunable的任务;
+>2.submit提交实现了Rrunable的任务;
 
 ```
 private static void futureTest() {
@@ -100,14 +100,8 @@ private static void futureTest() {
                 System.out.println("我被调用了！！");
             }
         });
-        try {
-            int result = (int)future.get();
-            System.out.print(result);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        // 这里无法捕获run方法里面的异常。
+		// 要想处理异常，需要在线程池创建时指定自定义的ThreadFactory类
     }
 ```
 
