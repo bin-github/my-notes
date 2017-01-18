@@ -167,3 +167,5 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 >3.remove()方法：删除尚未被执行的任务，只能删除execute提交的任务，submit提交的即时是尚未被执行也是不能删除的。
 
 >4.afterExecute()和beforeExecute()：在线程池创建类里面重写这两个方法，可以做一些监控之类的的功能，类似于aop。
+
+>5.注：通过ThreadPoolExecutor的几个属性的set方法设置线程池的一些属性，比如，设置创建后线程池的大小，使用SetCorePoolSize()方法。
