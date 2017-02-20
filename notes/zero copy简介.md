@@ -17,7 +17,11 @@
 >
 ![image](https://github.com/bin-github/my-project/blob/master/files/images/zeroCopy.jpg)
 
->4、java实现zero copy的代码：在输入、输出流中获得channel
+>4、主要使用场景：
+>>1、大文件的传输
+>>2、需要传输的对象是不需要程序处理的，只是一个简单的传输
+
+>5、java实现zero copy的代码：在输入、输出流中获得channel
 
 ```
 public void testSendfile(String fileName) throws IOException {
