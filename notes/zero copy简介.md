@@ -8,9 +8,13 @@
 >3、文件拷贝步骤 的前后对比图：
 
 >>1、一般的拷贝流程：
+
+>
 ![image](https://github.com/bin-github/my-project/blob/master/files/images/fileCopy.jpg)
 
 >>2、zero copy流程：
+
+>
 ![image](https://github.com/bin-github/my-project/blob/master/files/images/zeroCopy.jpg)
 
 >4、java实现zero copy的代码：在输入、输出流中获得channel
