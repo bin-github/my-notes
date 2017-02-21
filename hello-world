@@ -1,9 +1,0 @@
-Python：
-print（'hello world'）
-OR
-s='hello world'
-print(s)
-
-JAVA:
-System.out.println("hello world!");
-这是程序员的第一个程序。
