@@ -74,6 +74,9 @@ public class Executors {
 
 >>5.当 4 中的 BlockingQueue 为同步队列 SynchronousQueue 时，只处理MP任务，其他任务不在处理，抛出异常。
 
+>>6.当TM > BQ & MP 时，根据丢弃策略进行任务丢弃。业务场景：秒杀系统，
+
+>>7.当 6 中的所有任务执行完成之后，在心跳超时时 MP 会降落，不大于CP数量。业务场景：秒杀系统
 
 >5.在Executors中，常见线程池的创建一般有四种，每一种都有两个创建方法，一般是不需要指定ThreadFactory的，如果有必要，++可自己实现ThreadFactory接口，并在创建线程池时指定，并进行线程异常的处理++
 >>- 需要制定ThreadFactory的，
