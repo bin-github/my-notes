@@ -141,6 +141,17 @@ public static ExecutorService newSingleThreadExecutor() {
                                     new LinkedBlockingQueue<Runnable>()));
     }
 ```
+>> 1、创建单线程和newSingleThreadExecutor有什么区别？
+>>> 1、newSingleThreadExecutor在任务执行完成之后还是会一直存在的，new的单线程执行完就完了，当需要时还是要重新创建，消耗性能
+
+>>> 2、代码容易维护，只需要调用，无需到处创建
+
+>>> 3、能够有序的执行任务
+
+>>> 4、虽然是单线程处理，一旦线程因为处理异常等原因终止的时候，ThreadPoolExecutor会自动创建一个新的线程继续进行工作
+
+>> 2、缺点：
+>>> 1、和FixedThreadPool相同，当处理任务无限等待的时候会造成内存问题。
 
 >4.创建定时执行的线程池：newScheduledThreadPool(int corePoolSize);
 
