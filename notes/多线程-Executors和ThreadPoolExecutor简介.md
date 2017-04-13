@@ -61,7 +61,12 @@ public class Executors {
 >>- TimeUnit：keepAliveTime 的时间单位
 >>- BlockingQueue：保持任务队列的Runnable任务（一般使用默认）
 >>- ThreadFactory：线程创建工厂实现（一般使用默认）
->>- RejectedExecutionHandler：异常处理实现（一般使用默认）
+>>- RejectedExecutionHandler：线程池的饱和,出现异常的处理（一般使用默认）
+>>>- RejectedExecutionHandler 线程池的饱和策略:
+>>>>- AbortPolicy：直接抛出异常，默认策略；
+>>>>- CallerRunsPolicy：用调用者所在的线程来执行任务；
+>>>>- DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；
+>>>>- DiscardPolicy：直接丢弃任务；
 
 >4.ThreadPoolExecutor各参数大小关系：
 >>1、当任务数 TM 小于 corePoolSize CP 和 maximumPoolSize MP 时，任务被马上创建线程去执行，不放入大小为BQ的 BlockingQueue,其他参数忽略。
