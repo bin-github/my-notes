@@ -1,8 +1,8 @@
-##mybatis结果集映射总结
+### mybatis结果集映射总结
 
 ---
 
-###1.普通对象结果集映射
+#### 1.普通对象结果集映射
 >1.对象的属性都是一些java的八种常用类型或者String类型，
 直接进行映射即可，如下：
 
@@ -16,7 +16,7 @@
 ```
 >2.
 
-###2.对象属性含有另一种对象的结果集映射
+#### 2.对象属性含有另一种对象的结果集映射
 >1.对象属性中，部分属性是另一种对象，并且是has - one关系（一对一关系），如：一个博客有一个作者。
 >这类情况使用 **association** 映射节点。
 >>1.association 和普通的resultMap配置属性基本相同
@@ -94,7 +94,7 @@ where B.id = #{id}
     </collection>  
 </resultMap>
 ```
-###3.Discriminator(识别器)结果集筛选：
+#### 3.Discriminator(识别器)结果集筛选：
 >1.功能类似于java的switch，
 
 >2.case中的resultMap需要extends父resultMap，不然结果集值包含case中resultMap中的属性。
