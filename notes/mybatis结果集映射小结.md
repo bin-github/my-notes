@@ -96,6 +96,8 @@ where B.id = #{id}
     </collection>  
 </resultMap>
 ```
+>> 3、 **在具体的实现mapper中，几个属性是有顺序的：id，result，association，collection的顺序一定要注意，如上顺序不能乱，不然会报结果集不匹配的错误。**
+
 #### 3.Discriminator(识别器)结果集筛选：
 >1.功能类似于java的switch，
 
