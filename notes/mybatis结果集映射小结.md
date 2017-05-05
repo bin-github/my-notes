@@ -120,6 +120,33 @@ where B.id = #{id}
     <result property=”doorCount” column="door_count" />
 </resultMap>
 ```
+### 4、Java8中localTime和localDate在mybatis中的映射：
+> 1、Java8中的localTime和localDate在DB中的映射：
+
+type | header 1 | header 2
+--- | ---|---
+Java8 | DateTime | localDate
+db | time | localTime
+
+> 2、程序中使用localTime和localDate时，mybatis结果集映射需要额外的jar包转换，
+
+```
+<dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-typehandlers-jsr310</artifactId>
+</dependency>
+```
+> 该jar下其实是一组typeHandler（当然，也可以自己实现这些typeHandler），主要针对Java8中新时间api的转换，如果使用的mybatis版本是 **3.4** 之后的版本时，只需要在maven依赖中添加该jar即可，如果是之前的版本，还需要在实际的熟悉字段后面添加对应的typeHandler，如下：
+
+```
+<resultMap id="cptSimInfo" type="…… .CptSimInfo">
+        
+        <result column="cpt_show_end_day" property="cptShowEndDay" typeHandler="org.apache.ibatis.type.LocalDateTypeHandler"/>
+        <result column="cpt_show_begin_time" property="cptShowBeginTime" typeHandler="org.apache.ibatis.type.LocalTimeTypeHandler"/>
+        
+    </resultMap>
+```
+
 参考：http://blog.csdn.net/jr_soft/article/details/35274691
 http://www.cnblogs.com/yansum/p/5819973.html
 http://www.mybatis.org/mybatis-3/sqlmap-xml.html
