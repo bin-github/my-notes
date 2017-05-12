@@ -98,6 +98,20 @@ where B.id = #{id}
 ```
 >> 3、 **在具体的实现mapper中，几个属性是有顺序的：id，result，association，collection的顺序一定要注意，如上顺序不能乱，不然会报结果集不匹配的错误。**
 
+>> 4、resultMap中的id属性：id属性用于标识类别的，如下，奖励有多个名次奖励，每个名次有多种奖品
+```
+<resultMap id="cptDetail" type="com.…….CptDetail">
+        <result column="cpt_begin_time" property="cptBeginTime" typeHandler="org.apache.ibatis.type.LocalTimeTypeHandler"/>
+        <collection property="rewardInfos" ofType="…….CptRewardInfo" resultMap="rewardInfo"/>
+    </resultMap>
+    
+     <resultMap id="rewardInfo" type="…….CptRewardInfo">
+        <!-- 使用id属性的值去分类-->
+        <id column="reward_rank" property="rewardRank"/>
+        <collection property="cptRewards" ofType="…….CptReward" resultMap="cptReward"/>
+    </resultMap>
+```
+
 #### 3.Discriminator(识别器)结果集筛选：
 >1.功能类似于java的switch，
 
