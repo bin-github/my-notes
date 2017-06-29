@@ -76,4 +76,20 @@ private int LOCK_TIMEOUT = 5 * 1000;
         }
         return time;
     }
+    
+     // test
+    public static void main(String[] args) {
+        RedisLockUntil redisLockUntil = new RedisLockUntil();
+        String str = "2222";
+        // 为str加锁
+        long lockId = redisLockUntil.lock(str);
+        if (lockId <= 0){
+            log.warn("获取key={}的锁失败！！！",str);
+            continue;
+        }
+        //todo dosomething
+        
+        //解锁
+        redisLockUntil.unLock(str,lockId);
+    }
 ```
