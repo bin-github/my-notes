@@ -1,4 +1,4 @@
-##java变长数据结构扩容小结：
+## java变长数据结构扩容小结：
 
 ---
 > 线程安全
@@ -8,7 +8,7 @@
 * 一般使用synchronized关键字锁同步
 ---
 
-###1.StringBuffer（线程不安全），StringBuilder（安全）：两者的初始化和扩容机制是一样的
+### 1.StringBuffer（线程不安全），StringBuilder（安全）：两者的初始化和扩容机制是一样的
 >1.初始大小 16。
 
 ```
@@ -35,7 +35,7 @@
         value = Arrays.copyOf(value, newCapacity);
     }
 ```
-###2.ArrayList：可变数组，底层使用object对象数组实现，线程不安全
+### 2.ArrayList：可变数组，底层使用object对象数组实现，线程不安全
 >1.初始大小 0，但是只要增加一个元素，容量将会被置为10
 
 ```
@@ -83,7 +83,7 @@ private void ensureExplicitCapacity(int minCapacity) {
 
 >2.扩容机制：如上面的grow方法，大小为原来的1.5倍
 
-###3.LinkedList：底层是链表实现，线程不安全
+### 3.LinkedList：底层是链表实现，线程不安全
 >1.初始大小：0
 
 ```
@@ -99,7 +99,7 @@ public boolean add(E e) {
     }
 ```
 
-###4.ArrayDeque：底层实现是队列，线程不安全
+### 4.ArrayDeque：底层实现是队列，线程不安全
 >1.初始大小：16
 
 ```
@@ -128,7 +128,7 @@ private void doubleCapacity() {
 ```
 
 
-###5.Vector（线程安全），stack（线程安全）
+### 5.Vector（线程安全），stack（线程安全）
 
 >
 
@@ -139,7 +139,7 @@ private void doubleCapacity() {
 
 ###注：以上的数据类型，在底层元素复制的时候全部使用的是system.arraycopy()，Arrays.copyOf底层使用的也是system.arraycopy(),system.arraycopy()是个native方法。
 
-###6.hashTable（线程安全）
+### 6.hashTable（线程安全）
 >1.初始大小：11，填充因子0.75
 
 ```
@@ -164,7 +164,7 @@ protected void rehash() {
         ……
     }
 ```
-###7.hashMap，线程不安全，LinkedHashMap，底层是新建一个hashmap，hashSet底层也是新建一个hashMap
+### 7.hashMap，线程不安全，LinkedHashMap，底层是新建一个hashmap，hashSet底层也是新建一个hashMap
 >1.初始化大小，16，填充因子：0.75
 
 ```
