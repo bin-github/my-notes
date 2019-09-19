@@ -1,0 +1,21 @@
+### 实现：
+##### 1、其底层实现是使用 CopyOnWriteArrayList 实现的，操作也是使用list中的方法，
+
+```
+private final CopyOnWriteArrayList<E> al;
+
+public CopyOnWriteArraySet() {
+        al = new CopyOnWriteArrayList<E>();
+    }
+    
+// 其中add方法的实现如下，使得set里面没有重复的元素
+ public boolean add(E e) {
+        return al.addIfAbsent(e);
+    }
+```
+##### 2、set里的绝大部分操作都是使用 CopyOnWriteArrayList 里面的接口，但是有部分不是
+> 1、replaceAll
+
+> 2、removeIf
+
+> 3、subList
